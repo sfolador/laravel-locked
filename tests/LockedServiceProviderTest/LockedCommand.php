@@ -3,16 +3,7 @@
 use Illuminate\Console\Command;
 use Sfolador\Locked\Tests\TestClasses\Another;
 
-beforeAll(function () {
-    $files = __DIR__.'/../../vendor/orchestra/testbench-core/laravel/database/migrations';
-    //delete files
-    $files = glob($files.'/*'); // get all file names
-    foreach ($files as $file) { // iterate files
-        if (is_file($file)) {
-            unlink($file);
-        } // delete file
-    }
-});
+
 
 it('cannot invoke the command for a class that does not exist', function () {
     $this->artisan('lock:add', ['model' => 'App\Models\NotExistentModel'])
@@ -21,6 +12,8 @@ it('cannot invoke the command for a class that does not exist', function () {
 });
 
 it('can create a migration for a model', function () {
+
+    $this->artisan('migrate:reset');
     $this->artisan('lock:add', ['model' => Another::class])
         ->assertExitCode(Command::SUCCESS);
     $another = new Another();
