@@ -18,7 +18,6 @@ class LockedServiceProvider extends PackageServiceProvider
         $package
             ->name('laravel-locked')
             ->hasConfigFile()
-            ->hasViews()
             ->hasCommand(LockedCommand::class);
     }
 }

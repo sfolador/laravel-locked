@@ -47,10 +47,7 @@ class TestCase extends Orchestra
             'database' => ':memory:',
             'prefix' => '',
         ]);
-        /*
-        $migration = include __DIR__.'/../database/migrations/create_laravel-locked_table.php.stub';
-        $migration->up();
-        */
+
     }
 
     /**
