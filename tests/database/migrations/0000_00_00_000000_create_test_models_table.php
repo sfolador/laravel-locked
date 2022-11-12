@@ -14,6 +14,7 @@ return new class extends Migration
             $table->id();
 
             $table->timestamp('locked_at')->nullable();
+            $table->timestamp('custom_locked_at')->nullable();
 
             $table->timestamps();
         });

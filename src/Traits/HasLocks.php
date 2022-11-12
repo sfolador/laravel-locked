@@ -4,9 +4,13 @@ namespace Sfolador\Locked\Traits;
 
 trait HasLocks
 {
+    public static function getLockedColumnName()
+    {
+        return config('locked.model_locked_column');
+    }
     public function lock(): self
     {
-        $this->locked_at = now();
+        $this->{static::getLockedColumnName()} = now();
         $this->save();
 
         return $this;
@@ -14,7 +18,7 @@ trait HasLocks
 
     public function isLocked(): bool
     {
-        return $this->locked_at !== null;
+        return $this->{static::getLockedColumnName()} !== null;
     }
 
     public function isNotLocked(): bool
@@ -24,7 +28,7 @@ trait HasLocks
 
     public function unlock(): self
     {
-        $this->locked_at = null;
+        $this->{static::getLockedColumnName()} = null;
         $this->save();
 
         return $this;
@@ -53,11 +57,11 @@ trait HasLocks
 
     public function scopeLocked($query)
     {
-        $query->where('locked_at', '!=', null);
+        $query->where(static::getLockedColumnName(), '!=', null);
     }
 
     public function scopeUnlocked($query)
     {
-        $query->where('locked_at', null);
+        $query->where(static::getLockedColumnName(), null);
     }
 }
