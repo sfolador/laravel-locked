@@ -38,7 +38,8 @@ class LockedCommand extends Command
             'ModelTable' => $instance->getTable(),
         ]);
 
-        $filePath = date('Y_m_d_His').'_add_locked_columns_to_'.$instance->getTable().'.php';
+
+        $filePath = now()->format('Y_m_d_His').'_add_locked_columns_to_'.$instance->getTable().'.php';
         $path = app()->databasePath('migrations/'.$filePath);
 
         if (! $this->files->exists($path)) {

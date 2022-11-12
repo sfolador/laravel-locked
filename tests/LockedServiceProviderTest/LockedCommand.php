@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Storage;
 use Sfolador\Locked\Tests\TestClasses\Another;
+use function Spatie\PestPluginTestTime\testTime;
 
 it('cannot invoke the command for a class that does not exist', function () {
     $this->artisan('lock:add', ['model' => 'App\Models\NotExistentModel'])
@@ -10,17 +12,15 @@ it('cannot invoke the command for a class that does not exist', function () {
 });
 
 it('can create a migration for a model', function () {
-    $this->artisan('migrate:reset');
+
+    testTime()->freeze('2020-01-01 00:00:00');
+
     $this->artisan('lock:add', ['model' => Another::class])
         ->assertExitCode(Command::SUCCESS);
     $another = new Another();
 
-    $this->assertFileExists(database_path('migrations/'.date('Y_m_d_His').'_add_locked_columns_to_'.$another->getTable().'.php'));
-    $this->artisan('migrate');
+    $date = now()->format('Y_m_d_His');
+    $this->assertFileExists(database_path('migrations/'.$date.'_add_locked_columns_to_'.$another->getTable().'.php'));
 
-    $another->lock();
-
-    expect($another->isLocked())->toBeTrue();
-
-    $this->artisan('migrate:reset');
+    Storage::delete(database_path('migrations/'.$date.'_add_locked_columns_to_'.$another->getTable().'.php'));
 });
