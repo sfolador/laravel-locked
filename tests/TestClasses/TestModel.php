@@ -12,7 +12,6 @@ class TestModel extends Model
     use HasLocks;
     use HasFactory;
 
-
     protected static function newFactory()
     {
         return TestModelFactory::new();
