@@ -2,9 +2,9 @@
 
 namespace Sfolador\Locked;
 
+use Sfolador\Locked\Commands\LockedCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Sfolador\Locked\Commands\LockedCommand;
 
 class LockedServiceProvider extends PackageServiceProvider
 {

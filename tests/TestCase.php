@@ -4,19 +4,20 @@ namespace Sfolador\Locked\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use function Orchestra\Testbench\artisan;
 use Orchestra\Testbench\TestCase as Orchestra;
 use Sfolador\Locked\LockedServiceProvider;
-use function Orchestra\Testbench\artisan;
 
 class TestCase extends Orchestra
 {
     use RefreshDatabase;
+
     protected function setUp(): void
     {
         parent::setUp();
 
         Factory::guessFactoryNamesUsing(
-            fn(string $modelName) => 'Sfolador\\Locked\\Database\\Factories\\' . class_basename($modelName) . 'Factory'
+            fn (string $modelName) => 'Sfolador\\Locked\\Database\\Factories\\'.class_basename($modelName).'Factory'
         );
     }
 
@@ -32,9 +33,9 @@ class TestCase extends Orchestra
         // Setup default database to use sqlite :memory:
         $app['config']->set('database.default', 'testbench');
         $app['config']->set('database.connections.testbench', [
-            'driver'   => 'sqlite',
+            'driver' => 'sqlite',
             'database' => ':memory:',
-            'prefix'   => '',
+            'prefix' => '',
         ]);
     }
 
@@ -42,9 +43,9 @@ class TestCase extends Orchestra
     {
         config()->set('database.default', 'testbench');
         config()->set('database.connections.testbench', [
-            'driver'   => 'sqlite',
+            'driver' => 'sqlite',
             'database' => ':memory:',
-            'prefix'   => '',
+            'prefix' => '',
         ]);
         /*
         $migration = include __DIR__.'/../database/migrations/create_laravel-locked_table.php.stub';
@@ -59,7 +60,7 @@ class TestCase extends Orchestra
      */
     protected function defineDatabaseMigrations()
     {
-        $this->loadMigrationsFrom(__DIR__ . '/database/migrations');
+        $this->loadMigrationsFrom(__DIR__.'/database/migrations');
         artisan($this, 'migrate', ['--database' => 'testbench']);
 
         $this->beforeApplicationDestroyed(
