@@ -51,11 +51,11 @@ trait HasLocks
         return $this;
     }
 
-//    public function scopeLocked($query){
-//        $query->where('locked_at', '!=', null);
-//    }
-//
-//    public function scopeUnlocked($query){
-//        $query->where('locked_at', null);
-//    }
+    public function scopeLocked($query){
+        $query->where('locked_at', '!=', null);
+    }
+
+    public function scopeUnlocked($query){
+        $query->where('locked_at', null);
+    }
 }
