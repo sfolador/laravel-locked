@@ -4,7 +4,7 @@ use Sfolador\Locked\Tests\TestClasses\TestModel;
 
 it('can filter a model with a scope to see if it is locked', function () {
     $model = TestModel::factory()->locked()->create();
-    $model2 = TestModel::factory()->unlocked()->create();
+    TestModel::factory()->unlocked()->create();
 
     $locked = TestModel::locked()->get();
     expect($locked->count())
@@ -14,7 +14,7 @@ it('can filter a model with a scope to see if it is locked', function () {
 });
 
 it('can filter a model with a scope to see if it is unlocked', function () {
-    $model = TestModel::factory()->locked()->create();
+    TestModel::factory()->locked()->create();
     $model2 = TestModel::factory()->unlocked()->create();
 
     $locked = TestModel::unlocked()->get();
