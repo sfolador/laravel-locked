@@ -6,8 +6,9 @@ trait HasLocks
 {
     public static function getLockedColumnName()
     {
-        return config('locked.model_locked_column');
+        return config('locked.locking_column');
     }
+
     public function lock(): self
     {
         $this->{static::getLockedColumnName()} = now();
