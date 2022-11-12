@@ -3,8 +3,6 @@
 use Illuminate\Console\Command;
 use Sfolador\Locked\Tests\TestClasses\Another;
 
-
-
 it('cannot invoke the command for a class that does not exist', function () {
     $this->artisan('lock:add', ['model' => 'App\Models\NotExistentModel'])
         ->expectsOutput('Model App\Models\NotExistentModel does not exist')
@@ -12,7 +10,6 @@ it('cannot invoke the command for a class that does not exist', function () {
 });
 
 it('can create a migration for a model', function () {
-
     $this->artisan('migrate:reset');
     $this->artisan('lock:add', ['model' => Another::class])
         ->assertExitCode(Command::SUCCESS);
