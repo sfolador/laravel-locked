@@ -12,7 +12,6 @@ it('cannot invoke the command for a class that does not exist', function () {
 });
 
 it('can create a migration for a model', function () {
-
     testTime()->freeze('2020-01-01 00:00:00');
 
     $this->artisan('lock:add', ['model' => Another::class])
