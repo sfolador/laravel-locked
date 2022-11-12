@@ -10,7 +10,7 @@ use Sfolador\Locked\LockedServiceProvider;
 
 class TestCase extends Orchestra
 {
-    use RefreshDatabase;
+//    use RefreshDatabase;
 
     protected function setUp(): void
     {
@@ -61,6 +61,7 @@ class TestCase extends Orchestra
     protected function defineDatabaseMigrations()
     {
         $this->loadMigrationsFrom(__DIR__.'/database/migrations');
+
         artisan($this, 'migrate', ['--database' => 'testbench']);
 
         $this->beforeApplicationDestroyed(
