@@ -50,9 +50,8 @@ class LockedCommand extends Command
 
         if (! $this->files->exists($path)) {
             $this->files->put($path, $fileContents);
-            $this->info("File : {$path} created");
         } else {
-            $this->info("File : {$path} already exits");
+            $this->info("File : $path already exists");
         }
 
         return self::SUCCESS;

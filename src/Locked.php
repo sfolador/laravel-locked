@@ -2,6 +2,9 @@
 
 namespace Sfolador\Locked;
 
+use Illuminate\Database\Eloquent\Model;
+use Sfolador\Locked\Traits\HasLocks;
+
 class Locked
 {
     public function getLockedColumnName(): string
@@ -31,5 +34,25 @@ class Locked
     public function classesThatCanBeUnlocked(): array
     {
         return config('locked.can_be_unlocked', []);
+    }
+
+    public function usesHasLocks(Model $model): bool
+    {
+        return in_array(HasLocks::class, class_uses($model), true);
+    }
+
+    public function doesNotUseHasLocks(Model $model): bool
+    {
+        return ! $this->usesHasLocks($model);
+    }
+
+    public function preventsModificationsOnLockedObjects(): bool
+    {
+        return config('locked.prevent_modifications_on_locked_objects', false);
+    }
+
+    public function allowsModificationsOnLockedObjects(): bool
+    {
+        return ! $this->preventsModificationsOnLockedObjects();
     }
 }

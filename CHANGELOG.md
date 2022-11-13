@@ -12,3 +12,7 @@
 ## Release 0.3
 
 - it is now possible to block the unlocking of a locked model
+
+## Release 0.4
+
+- Add an option to block modifications (save/delete/replicate) on a locked model

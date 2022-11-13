@@ -56,6 +56,16 @@ trait HasLocks
         return $this;
     }
 
+    public function wasUnlocked()
+    {
+        return $this->getOriginal(app('locked')->getLockedColumnName()) === null;
+    }
+
+    public function wasLocked()
+    {
+        return $this->getOriginal(app('locked')->getLockedColumnName()) !== null;
+    }
+
     public function scopeLocked($query)
     {
         $query->where(app('locked')->getLockedColumnName(), '!=', null);
