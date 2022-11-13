@@ -28,5 +28,12 @@ class LockedServiceProvider extends PackageServiceProvider
         });
 
         $this->app->alias(Locked::class, 'locked');
+
+        $this->registerProviders();
+    }
+
+    private function registerProviders()
+    {
+        $this->app->register(LockedEventServiceProvider::class);
     }
 }

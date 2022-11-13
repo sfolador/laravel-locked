@@ -32,6 +32,8 @@ return [
     'unlock_allowed' => true,
     'can_be_unlocked' => [
     ],
+    
+    'prevent_modifications_on_locked_objects' => false,
 ];
 ```
 
@@ -41,6 +43,9 @@ The `default_namespace` value is used to automatically add the namespace to the 
 The `unlock_allowed` value is used to enable or disable the `unlock` command. If you set it to `false`, the `unlock` method will raise an exception. 
 It's possible to add a _whitelist_ of models that can be unlocked by setting the `can_be_unlocked` array. 
 If the array is empty and the `unlock_allowed` value is `false`, no model can be unlocked.
+
+The `prevent_modifications_on_locked_objects` value is used to forbid modifications on _locked_ models. 
+If you set it to `true`, an exception will be raised if you try to save/delete/replicated a _locked_ model.
 
 
 ## Command
@@ -116,7 +121,7 @@ if ($user->isNotLocked()) {
 - [x] Add an option to forbid locking a model if it is already locked and raise an Exception
 - [ ] Add an option to assign the locking/unlocking of a model to a specific type of user
 - [ ] Add logging to locking/unlocking actions for auditing purposes
-- [ ] Add an option to block the model saving if it is locked
+- [x] Add an option to block the model saving if it is locked
 
 ## Testing
 

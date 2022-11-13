@@ -10,4 +10,6 @@ return [
     'unlock_allowed' => true,
     'can_be_unlocked' => [
     ],
+
+    'prevent_modifications_on_locked_objects' => false,
 ];
