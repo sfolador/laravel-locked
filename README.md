@@ -25,11 +25,22 @@ This is the contents of the published config file:
 
 ```php
 return [
-   'locking_column' => 'locked_at'
+   'locking_column' => 'locked_at',
+   
+    'default_namespace' => 'App\Models',
+
+    'unlock_allowed' => true,
+    'can_be_unlocked' => [
+    ],
 ];
 ```
 
 You can choose another default column name for the locking column by changing the `locking_column` value.
+The `default_namespace` value is used to automatically add the namespace to the model passed as an argument to the Command. See the Usage section for more details.
+
+The `unlock_allowed` value is used to enable or disable the `unlock` command. If you set it to `false`, the `unlock` method will raise an exception. 
+It's possible to add a _whitelist_ of models that can be unlocked by setting the `can_be_unlocked` array. 
+If the array is empty and the `unlock_allowed` value is `false`, no model can be unlocked.
 
 
 ## Command
