@@ -23,13 +23,6 @@ You can install the package via composer:
 composer require sfolador/laravel-locked
 ```
 
-You can publish and run the migrations with:
-
-```bash
-php artisan vendor:publish --tag="laravel-locked-migrations"
-php artisan migrate
-```
-
 You can publish the config file with:
 
 ```bash
@@ -40,14 +33,12 @@ This is the contents of the published config file:
 
 ```php
 return [
+   'locking_column' => 'locked_at'
 ];
 ```
 
-Optionally, you can publish the views using
+You can choose another default column name for the locking column by changing the `locking_column` value.
 
-```bash
-php artisan vendor:publish --tag="laravel-locked-views"
-```
 
 ## Usage
 
@@ -70,14 +61,10 @@ Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed re
 
 Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
-## Security Vulnerabilities
-
-Please review [our security policy](../../security/policy) on how to report security vulnerabilities.
 
 ## Credits
 
 - [sfolador](https://github.com/sfolador)
-- [All Contributors](../../contributors)
 
 ## License
 
