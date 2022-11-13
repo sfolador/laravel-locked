@@ -2,16 +2,13 @@
 
 namespace Sfolador\Locked\Traits;
 
+use Sfolador\Locked\Exceptions\CannotUnlockException;
+
 trait HasLocks
 {
-    public static function getLockedColumnName()
-    {
-        return config('locked.locking_column');
-    }
-
     public function lock(): self
     {
-        $this->{static::getLockedColumnName()} = now();
+        $this->{app('locked')->getLockedColumnName()} = now();
         $this->save();
 
         return $this;
@@ -19,7 +16,7 @@ trait HasLocks
 
     public function isLocked(): bool
     {
-        return $this->{static::getLockedColumnName()} !== null;
+        return $this->{app('locked')->getLockedColumnName()} !== null;
     }
 
     public function isNotLocked(): bool
@@ -29,7 +26,10 @@ trait HasLocks
 
     public function unlock(): self
     {
-        $this->{static::getLockedColumnName()} = null;
+        if (app('locked')->cannotBeUnlocked($this)) {
+            throw new CannotUnlockException('This model cannot be unlocked');
+        }
+        $this->{app('locked')->getLockedColumnName()} = null;
         $this->save();
 
         return $this;
@@ -58,11 +58,11 @@ trait HasLocks
 
     public function scopeLocked($query)
     {
-        $query->where(static::getLockedColumnName(), '!=', null);
+        $query->where(app('locked')->getLockedColumnName(), '!=', null);
     }
 
     public function scopeUnlocked($query)
     {
-        $query->where(static::getLockedColumnName(), null);
+        $query->where(app('locked')->getLockedColumnName(), null);
     }
 }

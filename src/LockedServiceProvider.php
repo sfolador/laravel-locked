@@ -20,4 +20,13 @@ class LockedServiceProvider extends PackageServiceProvider
             ->hasConfigFile()
             ->hasCommand(LockedCommand::class);
     }
+
+    public function registeringPackage()
+    {
+        $this->app->singleton(Locked::class, function () {
+            return new Locked();
+        });
+
+        $this->app->alias(Locked::class, 'locked');
+    }
 }
