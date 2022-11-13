@@ -89,6 +89,11 @@ if ($user->isNotLocked()) {
 }
 ```
 
+## Todo
+
+- [ ] Add an option to forbid locking a model if it is already locked and raise an Exception
+- [ ] Add an option to assign the locking/unlocking of a model to a specific type of user
+- [ ] Add logging to locking/unlocking actions for auditing purposes
 
 ## Testing
 
