@@ -6,7 +6,6 @@ use Sfolador\Locked\Tests\TestClasses\Another;
 use function Spatie\PestPluginTestTime\testTime;
 
 it('cannot invoke the command for a class that does not exist', function () {
-
     $defaultConfig = config('locked.default_namespace');
 
     $this->artisan('lock:add', ['model' => 'NotExistentModel'])
@@ -17,7 +16,7 @@ it('cannot invoke the command for a class that does not exist', function () {
 it('can create a migration for a model', function () {
     testTime()->freeze('2020-01-01 00:00:00');
 
-    $this->artisan('lock:add', ['model' => "Another", '--namespace' => 'Sfolador\Locked\Tests\TestClasses'])
+    $this->artisan('lock:add', ['model' => 'Another', '--namespace' => 'Sfolador\Locked\Tests\TestClasses'])
         ->assertExitCode(Command::SUCCESS);
     $another = new Another();
 
@@ -33,7 +32,7 @@ it('can use the default namespace', function () {
     $defaultConfig = config('locked.default_namespace');
     config()->set('locked.default_namespace', 'Sfolador\Locked\Tests\TestClasses');
 
-    $this->artisan('lock:add', ['model' => "Another"])
+    $this->artisan('lock:add', ['model' => 'Another'])
         ->assertExitCode(Command::SUCCESS);
     $another = new Another();
 
