@@ -37,7 +37,7 @@ You can choose another default column name for the locking column by changing th
 There is an artisan command to create a migration for a class, run the command with :
 
 ```bash
-php artisan lock-add {classname}
+php artisan lock-add {classname} {--namespace=}
 ```
 
 For example, if you want to add a locking column to the `User` model, you can run the command :
@@ -51,6 +51,17 @@ This will create a migration file in the `database/migrations` folder, you can t
 ```bash
 php artisan migrate
 ```
+
+The command accepts an optional `--namespace` parameter, to specify the namespace of the class, for example :
+
+```bash
+php artisan lock-add User --namespace=App\Models\SomeFolder
+```
+
+The default namespace for the command is `App\Models` but you can change it in the config file by modifying the `default_namespace` value.
+
+
+
 
 ## Usage
 

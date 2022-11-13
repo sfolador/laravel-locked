@@ -3,4 +3,5 @@
 // config for Sfolador/Locked
 return [
     'locking_column' => 'locked_at',
+    'default_namespace' => 'App\Models',
 ];
