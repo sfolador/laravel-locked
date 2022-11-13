@@ -20,7 +20,7 @@ class TestModelFactory extends Factory
     {
         return $this->state(function (array $attributes) {
             return [
-                TestModel::getLockedColumnName() => now(),
+                app('locked')->getLockedColumnName() => now(),
             ];
         });
     }
@@ -29,7 +29,7 @@ class TestModelFactory extends Factory
     {
         return $this->state(function (array $attributes) {
             return [
-                TestModel::getLockedColumnName() => null,
+                app('locked')->getLockedColumnName() => null,
             ];
         });
     }
