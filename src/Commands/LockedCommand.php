@@ -7,7 +7,7 @@ use Illuminate\Filesystem\Filesystem;
 
 class LockedCommand extends Command
 {
-    public $signature = 'lock:add {model}';
+    public $signature = 'lock:add {model} {--namespace=}';
 
     public $description = 'Add a migration to add locked columns to a model';
 
@@ -25,15 +25,22 @@ class LockedCommand extends Command
 
     public function handle(): int
     {
-        //verify that the model type exists
         $model = $this->argument('model');
-        if (! class_exists($model)) {
-            $this->error("Model $model does not exist");
+
+        $namespace = config('locked.default_namespace');
+        if ($this->option('namespace')) {
+            $namespace = $this->option('namespace');
+        }
+
+        $className = $namespace."\\".$model;
+
+        if (! class_exists($className)) {
+            $this->error("Model $className does not exist");
 
             return self::FAILURE;
         }
 
-        $instance = new $model;
+        $instance = new $className();
         $fileContents = $this->getStubContents($this->getStubPath(), [
             'ModelTable' => $instance->getTable(),
         ]);
@@ -47,7 +54,6 @@ class LockedCommand extends Command
         } else {
             $this->info("File : {$path} already exits");
         }
-
         return self::SUCCESS;
     }
 
