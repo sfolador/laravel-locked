@@ -32,7 +32,7 @@ class LockedCommand extends Command
             $namespace = $this->option('namespace');
         }
 
-        $className = $namespace."\\".$model;
+        $className = $namespace.'\\'.$model;
 
         if (! class_exists($className)) {
             $this->error("Model $className does not exist");
@@ -54,6 +54,7 @@ class LockedCommand extends Command
         } else {
             $this->info("File : {$path} already exits");
         }
+
         return self::SUCCESS;
     }
 
