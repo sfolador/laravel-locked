@@ -4,6 +4,7 @@ namespace Sfolador\Locked;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Events\Dispatcher;
+use Illuminate\Notifications\Events\NotificationSending;
 use Sfolador\Locked\Exceptions\LockedModelException;
 
 class LockedModelSubscriber
@@ -20,6 +21,7 @@ class LockedModelSubscriber
             'eloquent.saving: *' => 'saving',
             'eloquent.deleting: *' => 'deleting',
             'eloquent.replicating: *' => 'replicating',
+            NotificationSending::class => 'notificationSending',
         ];
     }
 
@@ -81,6 +83,22 @@ class LockedModelSubscriber
             return true;
         }
         $model = $this->getModelFromPassedParams($entity);
+        if (app('locked')->doesNotUseHasLocks($model)) {
+            return true;
+        }
+        if ($model->isUnlocked()) {
+            return true;
+        }
+
+        throw new LockedModelException('This model is locked');
+    }
+
+    public function notificationSending(NotificationSending $event)
+    {
+        if (app(Locked::class)->allowsNotificationsToLockedObjects()) {
+            return false;
+        }
+        $model = $event->notifiable;
         if (app('locked')->doesNotUseHasLocks($model)) {
             return true;
         }

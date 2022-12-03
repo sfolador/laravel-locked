@@ -13,6 +13,7 @@ return new class extends Migration
         Schema::create('test_models', function (Blueprint $table) {
             $table->id();
 
+            $table->string('email')->nullable();
             $table->timestamp('locked_at')->nullable();
             $table->timestamp('custom_locked_at')->nullable();
 

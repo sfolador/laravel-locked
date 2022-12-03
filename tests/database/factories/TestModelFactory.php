@@ -12,7 +12,7 @@ class TestModelFactory extends Factory
     public function definition(): array
     {
         return [
-
+            'email' => $this->faker->email,
         ];
     }
 

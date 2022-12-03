@@ -3,6 +3,7 @@
 namespace Sfolador\Locked;
 
 use Illuminate\Foundation\Support\Providers\EventServiceProvider;
+use Illuminate\Notifications\Events\NotificationSending;
 
 class LockedEventServiceProvider extends EventServiceProvider
 {
@@ -12,6 +13,8 @@ class LockedEventServiceProvider extends EventServiceProvider
     protected $subscribe = [
         LockedModelSubscriber::class,
     ];
+
+
 
     /**
      * Register any events for your application.

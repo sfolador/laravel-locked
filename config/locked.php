@@ -12,4 +12,5 @@ return [
     ],
 
     'prevent_modifications_on_locked_objects' => false,
+    'prevent_notifications_to_locked_objects' => false,
 ];

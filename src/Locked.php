@@ -55,4 +55,9 @@ class Locked
     {
         return ! $this->preventsModificationsOnLockedObjects();
     }
+
+    public function allowsNotificationsToLockedObjects(): bool
+    {
+        return config('locked.prevent_notifications_to_locked_objects', false);
+    }
 }
