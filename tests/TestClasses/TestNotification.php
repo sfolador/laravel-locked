@@ -2,13 +2,11 @@
 
 namespace Sfolador\Locked\Tests\TestClasses;
 
-
-
 use Illuminate\Notifications\Notification;
 
 class TestNotification extends Notification
 {
-   // public string $id = 'test-notification';
+    // public string $id = 'test-notification';
 
     public function via($notifiable)
     {
