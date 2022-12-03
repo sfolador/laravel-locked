@@ -16,3 +16,7 @@
 ## Release 0.4
 
 - Add an option to block modifications (save/delete/replicate) on a locked model
+
+## Release 0.5
+
+- Add an option to block notifications to a locked model
