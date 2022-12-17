@@ -2,7 +2,7 @@
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/sfolador/laravel-locked.svg?style=flat-square)](https://packagist.org/packages/sfolador/laravel-locked)
 [![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/sfolador/laravel-locked/run-tests.yml?branch=main)](https://img.shields.io/github/actions/workflow/status/sfolador/laravel-locked/run-tests.yml?branch=main)
-[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/sfolador/laravel-locked/fix-php-code-style-issues.yml?branch=main)](https://img.shields.io/github/actions/workflow/status/sfolador/laravel-locked/fix-php-code-style-issues.yml?branch=main)
+[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/sfolador/laravel-locked/fix-php-code-style-issues.yml?branch=main&label=code%20style)](https://img.shields.io/github/actions/workflow/status/sfolador/laravel-locked/fix-php-code-style-issues.yml?branch=main)
 [![Total Downloads](https://img.shields.io/packagist/dt/sfolador/laravel-locked.svg?style=flat-square)](https://packagist.org/packages/sfolador/laravel-locked)
 
 <img src="https://sfolador-github.s3.eu-south-1.amazonaws.com/Locked_small.png?t=1" alt="Laravel Locked"/>
