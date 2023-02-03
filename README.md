@@ -20,7 +20,7 @@ composer require sfolador/laravel-locked
 You can publish the config file with:
 
 ```bash
-php artisan vendor:publish --tag="laravel-locked-config"
+php artisan vendor:publish --tag="locked-config"
 ```
 
 This is the contents of the published config file:
