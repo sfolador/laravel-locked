@@ -12,7 +12,6 @@ class LockedModelSubscriber
     /**
      * Register the listeners for the subscriber.
      *
-     * @param  Dispatcher  $events
      * @return array
      */
     public function subscribe(Dispatcher $events)
