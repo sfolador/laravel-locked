@@ -60,7 +60,6 @@ class LockedCommand extends Command
     /**
      * Replace the stub variables(key) with the desire value
      *
-     * @param $stub
      * @param  array  $stubVariables
      * @return bool|mixed|string
      */
