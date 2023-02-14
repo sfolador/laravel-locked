@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        if (Schema::hasTable('notifications')) {
+        if (Schema::hasTable('notifications') && app()->environment('testing')) {
             return;
         }
         Schema::create('notifications', function (Blueprint $table) {
@@ -33,7 +33,7 @@ return new class extends Migration
      */
     public function down()
     {
-        if (Schema::hasTable('notifications')) {
+        if (Schema::hasTable('notifications') ) {
             return;
         }
         Schema::dropIfExists('notifications');
