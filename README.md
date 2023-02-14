@@ -1,8 +1,8 @@
 # Locked eloquent models
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/sfolador/laravel-locked.svg?style=flat-square)](https://packagist.org/packages/sfolador/laravel-locked)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/sfolador/laravel-locked/run-tests?label=tests)](https://github.com/sfolador/laravel-locked/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/sfolador/laravel-locked/Fix%20PHP%20code%20style%20issues?label=code%20style)](https://github.com/sfolador/laravel-locked/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
+[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/sfolador/laravel-locked/run-tests.yml?branch=main)](https://img.shields.io/github/actions/workflow/status/sfolador/laravel-locked/run-tests.yml?branch=main)
+[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/sfolador/laravel-locked/fix-php-code-style-issues.yml?branch=main&label=code%20style)](https://img.shields.io/github/actions/workflow/status/sfolador/laravel-locked/fix-php-code-style-issues.yml?branch=main)
 [![Total Downloads](https://img.shields.io/packagist/dt/sfolador/laravel-locked.svg?style=flat-square)](https://packagist.org/packages/sfolador/laravel-locked)
 
 <img src="https://sfolador-github.s3.eu-south-1.amazonaws.com/Locked_small.png?t=1" alt="Laravel Locked"/>
@@ -20,7 +20,7 @@ composer require sfolador/laravel-locked
 You can publish the config file with:
 
 ```bash
-php artisan vendor:publish --tag="laravel-locked-config"
+php artisan vendor:publish --tag="locked-config"
 ```
 
 This is the contents of the published config file:
